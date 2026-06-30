@@ -1,0 +1,9 @@
+# robots.txt — Bosnia and Herzegovina Guidebook (SPEC §14).
+# OFF-DOMAIN: сайт ещё не запущен публично — временно ЗАКРЫТ от индексации
+# (Disallow: /), пока контент не готов. ВЕРНУТЬ `Allow: /` + `Disallow: /go/`
+# к запуску (память domains-live-verify-not-stale-registry).
+# Карта сайта — индекс, который генерирует @astrojs/sitemap (en — сайт одноязычный).
+User-agent: *
+Disallow: /
+
+Sitemap: https://bosniaguidebook.com/sitemap-index.xml
