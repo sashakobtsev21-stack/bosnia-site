@@ -29,9 +29,8 @@ import ArticleCard from '../components/ArticleCard.astro';
 import Icon from '../components/Icon.astro';
 import EmptyHint from '../components/EmptyHint.astro';
 // Hero-фон — кросс-фейд CC-фото (.hero__bg) поверх градиента (.hero — фолбэк под фото).
-// TODO(bosnia): сейчас один НЕЙТРАЛЬНЫЙ плейсхолдер; до запуска заменить на
-// 2–3 качественных CC-фото Боснии и Герцеговины (Сараево/Мостар/Кравице) с
-// атрибуцией автор+лицензия (память always-interlink/фото-уникальность).
+// 3 реальных CC-фото Боснии и Герцеговины (Мостар/Сараево/Почитель), 1920×860 webp
+// ≤200 КБ, атрибуция автор+лицензия из Wikimedia Commons (память фото-уникальность).
 
 interface Props {
   lang: Lang;
@@ -43,16 +42,31 @@ const pageTitle = `${dict.siteName} — ${dict.tagline}`;
 const description = dict.home.heroSubtitle;
 
 // Hero-кадры (§8.4): кросс-фейд по очереди (/js/hero-rotate.js). Первый — LCP
-// (eager/high), остальные lazy. ПЛЕЙСХОЛДЕР: одна нейтральная схематичная обложка
-// (своя, без чужой атрибуции) до подбора реальных CC-фото Боснии.
+// (eager/high), остальные lazy. Самый узнаваемый кадр (мост в Мостаре) — первым.
 const heroImages = [
   {
-    src: '/images/placeholder-cover.svg',
+    src: '/images/hero-stari-most.webp',
     w: 1920,
     h: 860,
-    author: '',
-    license: '',
-    href: '',
+    author: 'Ramirez',
+    license: 'CC BY-SA 4.0',
+    href: 'https://commons.wikimedia.org/wiki/File:Mostar_Old_Town_Panorama_2007.jpg',
+  },
+  {
+    src: '/images/hero-sarajevo.webp',
+    w: 1920,
+    h: 860,
+    author: 'Julian Nyča',
+    license: 'CC BY-SA 4.0',
+    href: 'https://commons.wikimedia.org/wiki/File:Sarajevo_City_Panorama.JPG',
+  },
+  {
+    src: '/images/hero-pocitelj.webp',
+    w: 1920,
+    h: 860,
+    author: 'Pudelek (Marcin Szala)',
+    license: 'CC BY-SA 3.0',
+    href: 'https://commons.wikimedia.org/wiki/File:Po%C4%8Ditelj_-_pano.jpg',
   },
 ];
 const heroCredit = (img: (typeof heroImages)[number]): string =>
